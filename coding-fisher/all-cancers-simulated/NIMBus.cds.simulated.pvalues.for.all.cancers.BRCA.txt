@@ -1,0 +1,1 @@
+gene	len	ct	mu	sigma	region	p-value
