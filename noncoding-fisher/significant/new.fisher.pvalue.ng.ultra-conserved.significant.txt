@@ -1,3 +1,0 @@
-chr	start	stops	name	p-value
-chr1	10781350	10781564	Ultra-conserved	2.25761776750364e-07
-chr1	245017602	245017819	Ultra-conserved	0.0395648111635634
