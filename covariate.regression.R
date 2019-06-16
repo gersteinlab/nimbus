@@ -48,7 +48,7 @@ system(paste(cmd, data_dir, cancer, sep = ""))
 write.table(poisson_mu, file = paste(data_dir, cancer, "/", trimer, ".", cancer, ".poisson.mu.txt", sep = ""), row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t")
 write.table(disptest_results, file = paste(data_dir, cancer, "/", trimer, ".", cancer, ".disp.pval.txt", sep = ""), row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t")
 
-write.table(nb_mu, file = paste(data_dir, cancer, "/", trimer, ".", cancer, ".nb.mu.txt", sep = ""), row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t")
+write.table(nb_mu, file = paste(data_dir, cancer, "/", trimer, ".", cancer, ".mu.nb.txt", sep = ""), row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t")
 write.table(nb_theta, file = paste(data_dir, cancer, "/", trimer, ".", cancer, ".nb.theta.txt", sep = ""), row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t")
 
 print(cancer)
