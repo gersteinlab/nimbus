@@ -11,7 +11,7 @@ covariates.regression.R requires as inputs:
 
 — A list of all 64 trimer combinations (3mer.txt)
 — Covariate values for each bin of the genome. In our analysis, the genome was binned into 1MB regions, for 2521 total bins. (files.gersteinlab.org/public-docs/2019/06.15/chrY.rm.cov.merge.hg19.1mb.txt)
-- The number variants affecting a particular trimer in each bin of the genome (e.g ./CaType.AAA.matrix.txt shows simulated variant information for variants affecting the AAA trimer in a 5-patient cohort. 64 such files are necessary as input.)
+— The number variants affecting a particular trimer in each bin of the genome (e.g ./CaType.AAA.matrix.txt shows simulated variant information for variants affecting the AAA trimer in a 5-patient cohort. 64 such files are necessary as input.)
 — The total number of trimers of each type in each bin in the genome (./trimer_offset/$trimer$.1Mb.txt provides this information for a 1Mb bin size)
 
 covariates.regression.R provides as output:
