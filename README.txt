@@ -8,7 +8,7 @@ megabase bins in order to correct the mutation rate for various genomic features
 the pvalue. 
 
 Files in the /noncoding-fisher/ and /noncoding-individual/ folders have five columns: (1) chr, (2) start, (3) stops, (4) name, 
-and (p). Chr means _____.  The name corresonds to the noncoding annotation file used. 
+and (p). The name corresonds to the noncoding annotation file used. 
 
 The /coding-fisher/all-cancers folder contains (1) a file with the pvalues for all cancers and (2) cancer-specific file 
 containing only the significant genes and pvalues. 
