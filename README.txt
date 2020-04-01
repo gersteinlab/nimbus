@@ -3,7 +3,7 @@
 NIMBus is implemented across two main scripts:
 
 1) covariate.regression.R
-2) pval.calculation.R (with convolution.methods.nb.pois.R as a dependency)
+2) pval.calculation.R (with pval_cal_functions.R and load_data_functions.R as dependencies)
 
 The first script, covariate.regression.R, uses a set of covariates and mutation rate information to generate a negative bionomial mutation rate model.
 
@@ -19,21 +19,32 @@ covariates.regression.R provides as output:
 — Mu parameter files for simulating a Poisson distribution (./$trimer$.$CaType$.poisson.mu.txt).
 — Mu and theta parameter files for simulating a negative binomial distribution (./$trimer$.$CaType$.nb.theta.txt ./$trimer$.$CaType$.mu.nb.txt)
 
+	The poisson, mu, and theta parameter files generated from pval.calculation.R. These parameter files must include the parameters for all trimers in a single tab separated file. Each row in these files corresponds to a separate bin. Single-line/bin examples are shown in (CaType.nb.theta.txt, CaType.mu.nb.txt, CaType.poisson.mu.txt).
+
+	Parameter files must be formatted to be used by the pval.calculation.R script. The example formatted files are shown in the example.CaType.mu.nb.txt, example.CaType.nb.theta.txt, and example.CaType.poisson.mu.txt files. 
+
 pval.calculation.R requires as inputs:
+- The results from the covariates.regression.R script
+
+- A CaType.kmer.varct.txt file
+	This file must be tab delimited. Column 1: chromosome number, Column 2: start of region, Column 3: end of region, Columns 4: associated gene, Column 5-68: the occurence of the particular mutated trimer in that region. Trimers are referenced in alphabetical order. 
+
+- A raw.kmer.count.txt file
+	This file must be tab delimited. Column 1: gene, Column 2: length of region, Column 3-66: the occurence of each trimer in that region. Trimers are referenced in alphabetical order
+
+- A closest file 
+	This file must be tab delimited. This file contains the closest 1m genome bins to the test regions. 
+	i.e. chr1	14000	15000	gene:1	chr1	1000000	2000000	chr1_2
+
+The CaType.kmer.varct.txt file, raw.kmer.count.txt file, and the closest file must be located in the same folder. In each file, they should share the first four columns corresponding to the test region sites. 
+
+Example files are shown on the Github as example.CaType.kmer.varct.txt, example.raw.kmer.count.txt, and example.closest.1m.union.txt files. 
 
 
-— The poisson, mu, and theta parameter files generated from pval.calculation.R. These parameter files must include the parameters for all trimers in a single tab separated file. Each row in these files corresponds to a separate bin. Single-line/bin examples are shown in (CaType.nb.theta.txt, CaType.mu.nb.txt, CaType.poisson.mu.txt).
-— A test region file (CaType.input.txt).
+The test regions folder contains the relevant test regions we used during our analysis. These regions were the intersection of the DHS hotspots and promoters that were also intersected with the transcription factor binding sites (TFBSs). 
+	Column 4: transcription factor 
+	Column 5: the TF binding site 
+	Column 6: gene 
 
-The test region file contains the following columns:
 
-(1) test region name (e.g., gene).
-(2) total region length in nucleotides.
-(3) total number of variants affecting this test region across the disease cohort.
-(4) bin name(s). If the test region spans multiple bins, they are listed with comma separation. These bin names must be included in the parameter files (mu, theta, mu poission).
-(5) length of the test region overlapping the bin(s). If the test region overlaps multiple bins, the length of overlap for each bin is listed with comma separation.
-(6) the number of variants affecting the bin(s). If the test region overlaps multiple bins, the number of variants affecting each bin is listed with comma separation.
-(7) the number of each the 64 trimers in the test region(s) with comma separation. If the test region overlaps multiple bins, these are listed with colon separation.
-(8) the number of variants affecting each the 64 trimers in the test region(s) with comma separation. If the test region overlaps multiple bins, these are listed with colon separation.
-
-An example test region input is given a CaType.input.txt. This file contains two simulated test regions. The first overlaps just a single bin. The second test region overlaps multiple bins.
+The covariates folder contains the 1M covariate matrix, 1M row names, and the top 30 covariates from the PCA analysis. 
