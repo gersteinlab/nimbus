@@ -21,7 +21,7 @@ covariates.regression.R provides as output:
 
 	The poisson, mu, and theta parameter files generated from pval.calculation.R. These parameter files must include the parameters for all trimers in a single tab separated file. Each row in these files corresponds to a separate bin. Single-line/bin examples are shown in (CaType.nb.theta.txt, CaType.mu.nb.txt, CaType.poisson.mu.txt).
 
-	Parameter files must be formatted to be used by the pval.calculation.R script. The example formatted files are shown in the example.CaType.mu.nb.txt, example.CaType.nb.theta.txt, and example.CaType.poisson.mu.txt files. 
+	Parameter files must be formatted to be used by the pval.calculation.R script. The example formatted files are shown in the formatted.CaType.mu.nb.txt, formatted.CaType.nb.theta.txt, and formatted.CaType.poisson.mu.txt files. 
 
 pval.calculation.R requires as inputs:
 - The results from the covariates.regression.R script
@@ -38,13 +38,11 @@ pval.calculation.R requires as inputs:
 
 The CaType.kmer.varct.txt file, raw.kmer.count.txt file, and the closest file must be located in the same folder. In each file, they should share the first four columns corresponding to the test region sites. 
 
-Example files are shown on the Github as example.CaType.kmer.varct.txt, example.raw.kmer.count.txt, and example.closest.1m.union.txt files. 
-
+Example files are shown on the Github as CaType.kmer.varct.txt, raw.kmer.count.txt, and closest.1m.union.txt files. 
 
 The test regions folder contains the relevant test regions we used during our analysis. These regions were the intersection of the DHS hotspots and promoters that were also intersected with the transcription factor binding sites (TFBSs). 
 	Column 4: transcription factor 
 	Column 5: the TF binding site 
 	Column 6: gene 
-
 
 The covariates folder contains the 1M covariate matrix, 1M row names, and the top 30 covariates from the PCA analysis. 
